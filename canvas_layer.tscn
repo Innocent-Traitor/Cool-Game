@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://yyty7iutk84o"]
+
+[ext_resource type="Script" path="res://DialogueUI.gd" id="1_4sc00"]
+[ext_resource type="Texture2D" uid="uid://dk7px586m6mvh" path="res://icon.svg" id="2_hjr0p"]
+[ext_resource type="Script" path="res://DebugMenu.gd" id="3_0rjqr"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="DialogueBox" type="Control" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(1000, 175)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -228.0
+offset_right = 500.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_4sc00")
+
+[node name="ColorRect" type="ColorRect" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.211765, 0.211765, 0.623529)
+
+[node name="Portrait" type="TextureRect" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -64.0
+offset_right = 152.0
+offset_bottom = 64.0
+grow_vertical = 2
+texture = ExtResource("2_hjr0p")
+
+[node name="ColorRect2" type="ColorRect" parent="DialogueBox"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 20.0
+offset_right = 985.0
+offset_bottom = 155.0
+color = Color(0.109804, 0.109804, 0.109804, 0.776471)
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueBox"]
+clip_contents = false
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = -64.5
+offset_right = -20.0
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu"
+scroll_active = false
+tab_size = 0
+shortcut_keys_enabled = false
+
+[node name="DebugMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_0rjqr")
+
+[node name="FPSCounter" type="Label" parent="DebugMenu"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 68.0
+offset_right = 92.0
+offset_bottom = 91.0
+
+[connection signal="meta_clicked" from="DialogueBox/DialogueText" to="DialogueBox" method="_on_dialogue_text_meta_clicked"]
