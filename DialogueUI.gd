@@ -28,7 +28,7 @@ func handleTextDisplay(options : Array) -> void:
 	handleTextDisplay(options)
 
 
-### Load the next dialogue in the current scene
+## Load the next dialogue in the current scene
 func loadNextDialogue() -> void:
 	talk_index += 1
 	if (not talk_index > len(current_scene) - 1):
