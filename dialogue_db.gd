@@ -1,6 +1,16 @@
 extends Node
 class_name Dialogue_DB
 
+
+## scene_identifier {
+##  talk_index: {
+##    'character': The internal character identifier string (NOT NUMBER ID)
+##    'text': Text to display
+##    'vars': Variables to insert into the text <- TODO
+##    'options': Additional options to use when displaying text <- NOTE: Dunno if I'll use this
+##
+
+
 const DIALOGUE_DB = {
 	'scene_1': {
 		0: {
@@ -19,6 +29,11 @@ const DIALOGUE_DB = {
 			'character': 'Placeholder',
 			'text': '[pulse]Pulse[/pulse]  [wave]Wave[/wave]  [tornado]Tornado[/tornado]  [shake]Shake[/shake]  '
 		},
+        4: {
+            'character': 'Placeholder',
+            'text': 'Hello %s, there are %d enemies outside!',
+            'vars': ['Joe', 10]
+        }
 	}
 }
 

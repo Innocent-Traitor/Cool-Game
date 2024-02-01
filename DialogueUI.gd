@@ -18,7 +18,10 @@ func _ready() -> void:
 func displayDialogue() -> void:
 	var chara = CHARACTER_DB[current_talk.get('character')]
 	$Portrait.texture = load(chara.get('portrait'))
-	$DialogueText.text = current_talk.text
+	if 'vars' in current_talk:
+		$DialogueText.text = current_talk.text % current_talk.vars
+	else:
+		$DialogueText.text = current_talk.text
 	$DialogueText.visible_characters = 0
 	is_talking = true
 	handleTextDisplay([])
