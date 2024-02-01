@@ -46,7 +46,10 @@ func loadScene(scene : String) -> void:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed('next'):
-		loadNextDialogue()
+		if ($DialogueText.visible_ratio == 1):
+			loadNextDialogue()
+		else:
+			$DialogueText.visible_ratio = 1
 
 
 const DIALOGUE_DB = {
