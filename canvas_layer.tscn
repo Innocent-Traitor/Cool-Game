@@ -1,8 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://yyty7iutk84o"]
+[gd_scene load_steps=13 format=3 uid="uid://yyty7iutk84o"]
 
 [ext_resource type="Script" path="res://DialogueUI.gd" id="1_4sc00"]
-[ext_resource type="Texture2D" uid="uid://dk7px586m6mvh" path="res://icon.svg" id="2_hjr0p"]
+[ext_resource type="Texture2D" uid="uid://dmdsr320tvfcy" path="res://sprites/frame1.png" id="2_voja3"]
 [ext_resource type="Script" path="res://DebugMenu.gd" id="3_0rjqr"]
+[ext_resource type="Texture2D" uid="uid://dcorpyh008f1w" path="res://sprites/frame2.png" id="4_3pecj"]
+[ext_resource type="Texture2D" uid="uid://bg2h1d4awhbow" path="res://sprites/frame4.png" id="5_hk70a"]
+[ext_resource type="Texture2D" uid="uid://bn5ulqkjbx1f8" path="res://sprites/frame5.png" id="6_ls3co"]
+[ext_resource type="Texture2D" uid="uid://cne8dutpuqrme" path="res://sprites/frame3.png" id="7_v6hbh"]
+[ext_resource type="Texture2D" uid="uid://c4dq3bpre8kfo" path="res://sprites/frame6.png" id="7_vsck7"]
+
+[sub_resource type="Animation" id="Animation_esfoj"]
+resource_name = "Blink"
+length = 1.00001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueBox/Portrait:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_voja3"), ExtResource("4_3pecj"), ExtResource("7_v6hbh"), ExtResource("5_hk70a"), ExtResource("6_ls3co"), ExtResource("5_hk70a"), ExtResource("7_v6hbh"), ExtResource("4_3pecj"), ExtResource("2_voja3")]
+}
+
+[sub_resource type="Animation" id="Animation_3vjlm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueBox/Portrait:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_voja3")]
+}
+
+[sub_resource type="Animation" id="Animation_j1h7l"]
+resource_name = "Talk"
+length = 1.00001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueBox/Portrait:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_voja3"), ExtResource("7_vsck7"), ExtResource("2_voja3"), ExtResource("7_vsck7"), ExtResource("2_voja3"), ExtResource("7_vsck7"), ExtResource("2_voja3")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b30h1"]
+_data = {
+"Blink": SubResource("Animation_esfoj"),
+"RESET": SubResource("Animation_3vjlm"),
+"Talk": SubResource("Animation_j1h7l")
+}
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -42,7 +101,8 @@ offset_top = -64.0
 offset_right = 152.0
 offset_bottom = 64.0
 grow_vertical = 2
-texture = ExtResource("2_hjr0p")
+texture = ExtResource("2_voja3")
+expand_mode = 2
 
 [node name="ColorRect2" type="ColorRect" parent="DialogueBox"]
 layout_mode = 0
@@ -74,6 +134,12 @@ scroll_active = false
 tab_size = 0
 shortcut_keys_enabled = false
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogueBox"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_b30h1")
+}
+
 [node name="DebugMenu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -89,3 +155,4 @@ offset_right = 92.0
 offset_bottom = 91.0
 
 [connection signal="meta_clicked" from="DialogueBox/DialogueText" to="DialogueBox" method="_on_dialogue_text_meta_clicked"]
+[connection signal="animation_finished" from="DialogueBox/AnimationPlayer" to="DialogueBox" method="_on_animation_player_animation_finished"]
