@@ -23,7 +23,7 @@ func displayDialogue() -> void:
 
 ## Gradually display the dialogue box's text
 func handleTextDisplay(options : Array) -> void:
-	if ($DialogueText.visible_characters >= len($DialogueText.text)):
+	if ($DialogueText.visible_characters >= len($DialogueText.text) or not is_talking):
 		is_talking = false
 		return
 
@@ -62,10 +62,10 @@ func handlePortait() -> void:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed('next'):
-		if ($DialogueText.visible_ratio == 1):
+		if (not is_talking):
 			loadNextDialogue()
 		else:
-			$DialogueText.visible_characters = len($DialogueText.text)
+			$DialogueText.visible_characters = -1
 			is_talking = false
 
 const DIALOGUE_DB = {
