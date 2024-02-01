@@ -2,6 +2,9 @@ extends Control
 
 @export var text_speed = 2  ## 1 = Slow, 2 = Normal, 3 = Fast
 
+const DIALOGUE_DB = Dialogue_DB.DIALOGUE_DB
+const CHARACTER_DB = Dialogue_DB.CHARACTER_DB
+
 var current_scene = 'NO SCENE'
 var current_talk = 'NO TALK'
 var talk_index = 0
@@ -13,7 +16,8 @@ func _ready() -> void:
 
 ## Sets the Dialogue Box's Portrait, Text, and begins the display of text
 func displayDialogue() -> void:
-	$Portrait.texture = load(current_talk.portrait)
+	var chara = CHARACTER_DB[current_talk.get('character')]
+	$Portrait.texture = load(chara.get('portrait'))
 	$DialogueText.text = current_talk.text
 	$DialogueText.visible_characters = 0
 	is_talking = true
@@ -50,11 +54,11 @@ func loadScene(scene : String) -> void:
 
 func handlePortait() -> void:
 	if (is_talking):
-		$AnimationPlayer.play('Talk')
+		$AnimationPlayer.play(current_talk.get('character') + '_Talk')
 	else:
 		var ran = randf()
 		if (ran < 0.1):
-			$AnimationPlayer.play('Blink')
+			$AnimationPlayer.play(current_talk.get('character') + '_Blink')
 		else:
 			await get_tree().create_timer(1).timeout
 			handlePortait()
@@ -68,26 +72,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			$DialogueText.visible_characters = -1
 			is_talking = false
 
-const DIALOGUE_DB = {
-	'scene_1': {
-		0: {
-			'portrait': 'res://sprites/frame1.png',
-			'text': 'The quick brown fox jumped over the lazy dog.'
-		},
-		1: {
-			'portrait': 'res://sprites/frame1.png',
-			'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu'
-		},
-		2: {
-			'portrait': 'res://sprites/frame1.png',
-			'text': '[b]Bold[/b]  [i]Italics[/i]  [b][i]Bold Italics[/i][/b]  [u]Underline[/u]  [s]Strikethrough[/s]  [url=https://www.moonsoftstudios.com]URL[/url]  [img=32x32]res://icon.svg[/img]\n [color=#00beef]Colored[/color]  [bgcolor=#00beef]BGColored[/bgcolor]  [fgcolor=#00beef]FGColored[/fgcolor]  [outline_size=2][outline_color=#00beef]Outline[/outline_color][/outline_size]'
-		},
-		3: {
-			'portrait': 'res://sprites/frame1.png',
-			'text': '[pulse]Pulse[/pulse]  [wave]Wave[/wave]  [tornado]Tornado[/tornado]  [shake]Shake[/shake]  '
-		},
-	}
-}
 
 ## Open RichTextLabel URLs
 func _on_dialogue_text_meta_clicked(meta: Variant) -> void:
