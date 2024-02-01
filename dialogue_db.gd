@@ -6,7 +6,7 @@ class_name Dialogue_DB
 ##  talk_index: {
 ##    'character': The internal character identifier string (NOT NUMBER ID)
 ##    'text': Text to display
-##    'vars': Variables to insert into the text <- TODO
+##    'vars': Variables to insert into the text
 ##    'options': Additional options to use when displaying text <- NOTE: Dunno if I'll use this
 ##
 

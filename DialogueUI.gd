@@ -14,6 +14,11 @@ func _ready() -> void:
 	loadScene('scene_1')
 	displayDialogue()
 
+
+func _get_scene_load_request(scene : String):
+	loadScene(scene)
+	displayDialogue()
+
 ## Sets the Dialogue Box's Portrait, Text, and begins the display of text
 func displayDialogue() -> void:
 	var chara = CHARACTER_DB[current_talk.get('character')]
