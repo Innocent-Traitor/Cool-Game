@@ -10,7 +10,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	handle_movement()
+	if (not is_busy):
+		handle_movement()
 
 
 func handle_movement() -> void:
@@ -33,8 +34,9 @@ func handle_movement() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('next') and not is_busy:
 		var body = $InteractBody.get_overlapping_areas()
-		do_interact(body[0])
-		print('interacting with ' + str(body[0]))
+		if body:
+			do_interact(body[0])
+			print('interacting with ' + str(body[0]))
 
 
 func do_interact(obj : Node) -> void:
@@ -43,3 +45,4 @@ func do_interact(obj : Node) -> void:
 
 func recieve_interact_info(info : Array) -> void:
 	print('Got info from interaction: ' + str(info))
+	is_busy = true

@@ -11,8 +11,7 @@ var talk_index = 0
 var is_talking = false
 
 func _ready() -> void:
-	load_scene('scene_1')
-	display_dialogue()
+	process_mode = PROCESS_MODE_DISABLED
 
 
 func _get_scene_load_request(scene : String):
@@ -51,7 +50,16 @@ func load_next_dialogue() -> void:
 		current_talk = current_scene[talk_index]
 		display_dialogue()
 	else:
-		print('no more text')
+		await get_tree().create_timer(0.5).timeout
+		get_tree().get_first_node_in_group('Player').is_busy = false
+		current_scene = 'NO SCENE'
+		current_talk = 'NO TALK'
+		talk_index = 0
+		is_talking = false
+		visible = false
+		process_mode = PROCESS_MODE_DISABLED
+
+
 
 
 func load_scene(scene : String) -> void:
@@ -87,3 +95,6 @@ func _on_dialogue_text_meta_clicked(meta: Variant) -> void:
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	handle_portrait()
+
+func _on_visibility_changed() -> void:
+	_get_scene_load_request('scene_1')

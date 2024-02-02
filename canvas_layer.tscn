@@ -65,7 +65,9 @@ _data = {
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
-[node name="DialogueBox" type="Control" parent="."]
+[node name="DialogueBox" type="Control" parent="." groups=["DialogueBox"]]
+unique_name_in_owner = true
+visible = false
 clip_contents = true
 custom_minimum_size = Vector2(1000, 175)
 layout_mode = 3
@@ -154,5 +156,6 @@ offset_top = 68.0
 offset_right = 92.0
 offset_bottom = 91.0
 
+[connection signal="visibility_changed" from="DialogueBox" to="DialogueBox" method="_on_visibility_changed"]
 [connection signal="meta_clicked" from="DialogueBox/DialogueText" to="DialogueBox" method="_on_dialogue_text_meta_clicked"]
 [connection signal="animation_finished" from="DialogueBox/AnimationPlayer" to="DialogueBox" method="_on_animation_player_animation_finished"]
