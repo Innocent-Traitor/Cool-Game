@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq44qxy4hvbb2"]
+[gd_scene load_steps=3 format=3 uid="uid://dq44qxy4hvbb2"]
 
 [ext_resource type="PackedScene" uid="uid://b7e4dhx86xbdl" path="res://player.tscn" id="1_6gny1"]
+[ext_resource type="PackedScene" uid="uid://behubdm45nj" path="res://non_moving_npc.tscn" id="2_xbnbx"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_6gny1")]
 position = Vector2(621, 249)
+
+[node name="Non-MovingNPC" parent="." instance=ExtResource("2_xbnbx")]
+position = Vector2(342, 244)
