@@ -5,8 +5,10 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_6gny1")]
-position = Vector2(621, 249)
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_6gny1")]
+position = Vector2(623, 249)
 
 [node name="Non-MovingNPC" parent="." instance=ExtResource("2_xbnbx")]
-position = Vector2(342, 244)
+position = Vector2(342, 242)
+npc_relationship = 1
+npc_interact = "NPC_TALK"

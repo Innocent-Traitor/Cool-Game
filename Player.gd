@@ -15,8 +15,8 @@ func _process(_delta: float) -> void:
 
 func handle_movement() -> void:
 	var dir = Input.get_vector("left", "right", "up", "down")
+	velocity = dir * speed
 	move_and_slide()
-	print(dir)
 
 	match dir:
 		Vector2(1, 0):
@@ -38,4 +38,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func do_interact(obj : Node) -> void:
-	pass
+	obj.get_parent().handle_interact()
+
+
+func recieve_interact_info(info : Array) -> void:
+	print('Got info from interaction: ' + str(info))
