@@ -11,16 +11,16 @@ var talk_index = 0
 var is_talking = false
 
 func _ready() -> void:
-	loadScene('scene_1')
-	displayDialogue()
+	load_scene('scene_1')
+	display_dialogue()
 
 
 func _get_scene_load_request(scene : String):
-	loadScene(scene)
-	displayDialogue()
+	load_scene(scene)
+	display_dialogue()
 
 ## Sets the Dialogue Box's Portrait, Text, and begins the display of text
-func displayDialogue() -> void:
+func display_dialogue() -> void:
 	var chara = CHARACTER_DB[current_talk.get('character')]
 	$Portrait.texture = load(chara.get('portrait'))
 	if 'vars' in current_talk:
@@ -29,38 +29,38 @@ func displayDialogue() -> void:
 		$DialogueText.text = current_talk.text
 	$DialogueText.visible_characters = 0
 	is_talking = true
-	handleTextDisplay([])
-	handlePortait()
+	handle_text_display([])
+	handle_portrait()
 
 
 ## Gradually display the dialogue box's text
-func handleTextDisplay(options : Array) -> void:
+func handle_text_display(options : Array) -> void:
 	if ($DialogueText.visible_characters >= len($DialogueText.text) or not is_talking):
 		is_talking = false
 		return
 
 	$DialogueText.visible_characters += text_speed
 	await get_tree().create_timer(0.01666667).timeout
-	handleTextDisplay(options)
+	handle_text_display(options)
 
 
 ## Load the next dialogue in the current scene
-func loadNextDialogue() -> void:
+func load_next_dialogue() -> void:
 	talk_index += 1
 	if (not talk_index > len(current_scene) - 1):
 		current_talk = current_scene[talk_index]
-		displayDialogue()
+		display_dialogue()
 	else:
 		print('no more text')
 
 
-func loadScene(scene : String) -> void:
+func load_scene(scene : String) -> void:
 	current_scene = DIALOGUE_DB[scene]
 	current_talk = current_scene[0]
 	talk_index = 0
 
 
-func handlePortait() -> void:
+func handle_portrait() -> void:
 	if (is_talking):
 		$AnimationPlayer.play(current_talk.get('character') + '_Talk')
 	else:
@@ -69,13 +69,13 @@ func handlePortait() -> void:
 			$AnimationPlayer.play(current_talk.get('character') + '_Blink')
 		else:
 			await get_tree().create_timer(1).timeout
-			handlePortait()
+			handle_portrait()
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed('next'):
 		if (not is_talking):
-			loadNextDialogue()
+			load_next_dialogue()
 		else:
 			$DialogueText.visible_characters = -1
 			is_talking = false
@@ -86,4 +86,4 @@ func _on_dialogue_text_meta_clicked(meta: Variant) -> void:
 	OS.shell_open(str(meta))
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	handlePortait()
+	handle_portrait()

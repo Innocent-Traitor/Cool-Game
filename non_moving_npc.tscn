@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://behubdm45nj"]
+
+[ext_resource type="Texture2D" uid="uid://c7rluhmfc1wh4" path="res://sprites/NPC.png" id="1_j72ts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdx3l"]
+size = Vector2(44, 48)
+
+[node name="Non-MovingNPC" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_j72ts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 5)
+shape = SubResource("RectangleShape2D_fdx3l")

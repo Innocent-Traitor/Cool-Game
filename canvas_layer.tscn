@@ -9,21 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cne8dutpuqrme" path="res://sprites/frame3.png" id="7_v6hbh"]
 [ext_resource type="Texture2D" uid="uid://c4dq3bpre8kfo" path="res://sprites/frame6.png" id="7_vsck7"]
 
-[sub_resource type="Animation" id="Animation_3vjlm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DialogueBox/Portrait:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_voja3")]
-}
-
 [sub_resource type="Animation" id="Animation_esfoj"]
 resource_name = "Blink"
 length = 1.00001
@@ -54,6 +39,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("2_voja3"), ExtResource("7_vsck7"), ExtResource("2_voja3"), ExtResource("7_vsck7"), ExtResource("2_voja3"), ExtResource("7_vsck7"), ExtResource("2_voja3")]
+}
+
+[sub_resource type="Animation" id="Animation_3vjlm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueBox/Portrait:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_voja3")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b30h1"]
