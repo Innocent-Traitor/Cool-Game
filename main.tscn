@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq44qxy4hvbb2"]
+[gd_scene load_steps=8 format=3 uid="uid://dq44qxy4hvbb2"]
 
 [ext_resource type="PackedScene" uid="uid://b7e4dhx86xbdl" path="res://player.tscn" id="1_6gny1"]
 [ext_resource type="PackedScene" uid="uid://behubdm45nj" path="res://non_moving_npc.tscn" id="2_xbnbx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://yyty7iutk84o" path="res://canvas_layer.tscn" id="3_vf8kp"]
 [ext_resource type="Script" path="res://test_talk_2.gd" id="4_108lc"]
 [ext_resource type="Script" path="res://test_talk_3.gd" id="5_arq20"]
+[ext_resource type="Script" path="res://debug_button_transition.gd" id="7_vijn0"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -56,5 +57,15 @@ text = "Narration Style"
 
 [node name="DialogueScene" parent="CanvasLayer" index="0"]
 visible = false
+
+[node name="Button" type="Button" parent="."]
+offset_left = 899.0
+offset_top = 82.0
+offset_right = 1064.0
+offset_bottom = 113.0
+text = "Fade Transition Test"
+script = ExtResource("7_vijn0")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 
 [editable path="CanvasLayer"]

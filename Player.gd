@@ -5,7 +5,7 @@ extends CharacterBody2D
 var is_busy : bool = false
 
 func _ready() -> void:
-	pass
+	print("ready")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -13,7 +13,6 @@ var do_animation = false
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_DISABLED
-	print('"Both of us shall drown" said the scorpian' )
 
 
 func _get_scene_load_request(scene : String):
@@ -38,7 +37,6 @@ func display_dialogue() -> void:
 	handle_text_display([])
 	handle_portrait()
 
-
 ## Gradually display the dialogue box's text
 func handle_text_display(options : Array) -> void:
 	if ($TextBox/TextBoxText.visible_characters >= len($TextBox/TextBoxText.text) or not is_talking):
@@ -50,7 +48,7 @@ func handle_text_display(options : Array) -> void:
 	handle_text_display(options)
 
 
-## Load the next dialogue in the current scene
+## Load the next dialogue in the current LOADED scene
 func load_next_dialogue() -> void:
 	talk_index += 1
 	if (not talk_index > len(current_scene) - 1):
@@ -73,7 +71,7 @@ func load_scene(scene : String) -> void:
 	current_talk = current_scene[0]
 	talk_index = 0
 
-
+# Handles portrait animation if do_animation is truthy
 func handle_portrait() -> void:
 	if (not do_animation or not visible): return
 	if (is_talking):
@@ -105,7 +103,6 @@ func adjust_textbox(chara) -> void:
 		$TextBox/TextBoxText.position = Vector2(256, 443)
 		$TextBox/TextBoxForegroundPanel.size = Vector2(810, 135)
 		$TextBox/TextBoxText.size = Vector2(800, 120)
-
 
 	if (chara['name'] == null):
 		$TextBox/TextBoxNamePanel.visible = false

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueDB="*res://dialogue_db.gd"
+CutsceneHandler="*res://cutscene_handler.gd"
 
 [input]
 
