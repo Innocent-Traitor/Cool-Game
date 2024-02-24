@@ -1,19 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq44qxy4hvbb2"]
+[gd_scene load_steps=7 format=3 uid="uid://dq44qxy4hvbb2"]
 
 [ext_resource type="PackedScene" uid="uid://b7e4dhx86xbdl" path="res://player.tscn" id="1_6gny1"]
 [ext_resource type="PackedScene" uid="uid://behubdm45nj" path="res://non_moving_npc.tscn" id="2_xbnbx"]
+[ext_resource type="Script" path="res://talk_test_1.gd" id="3_8htsk"]
 [ext_resource type="PackedScene" uid="uid://yyty7iutk84o" path="res://canvas_layer.tscn" id="3_vf8kp"]
+[ext_resource type="Script" path="res://test_talk_2.gd" id="4_108lc"]
+[ext_resource type="Script" path="res://test_talk_3.gd" id="5_arq20"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_6gny1")]
 position = Vector2(623, 249)
 
-[node name="Non-MovingNPC" parent="." instance=ExtResource("2_xbnbx")]
+[node name="TestTalk1" parent="." instance=ExtResource("2_xbnbx")]
 position = Vector2(342, 242)
-npc_relationship = 1
+script = ExtResource("3_8htsk")
+npc_name = "Adachi Rei"
 npc_interact = "NPC_TALK"
 
+[node name="Label" type="Label" parent="TestTalk1"]
+offset_left = -32.0
+offset_top = -70.0
+offset_right = 8.0
+offset_bottom = -47.0
+text = "Basic"
+
+[node name="TestTalk2" parent="." instance=ExtResource("2_xbnbx")]
+modulate = Color(0.168627, 1, 1, 1)
+position = Vector2(330, 398)
+script = ExtResource("4_108lc")
+npc_name = "Stickman"
+npc_interact = "NPC_TALK"
+
+[node name="Label" type="Label" parent="TestTalk2"]
+offset_left = -27.0
+offset_top = -62.0
+offset_right = 13.0
+offset_bottom = -39.0
+text = "Visual Novel Style"
+
+[node name="TestTalk3" parent="." instance=ExtResource("2_xbnbx")]
+modulate = Color(0.980392, 0.0470588, 0.823529, 1)
+position = Vector2(335, 499)
+script = ExtResource("5_arq20")
+npc_interact = "NPC_TALK"
+
+[node name="Label" type="Label" parent="TestTalk3"]
+offset_left = -26.0
+offset_top = 42.0
+offset_right = 14.0
+offset_bottom = 65.0
+text = "Narration Style"
+
 [node name="CanvasLayer" parent="." instance=ExtResource("3_vf8kp")]
+
+[node name="DialogueScene" parent="CanvasLayer" index="0"]
+visible = false
 
 [editable path="CanvasLayer"]

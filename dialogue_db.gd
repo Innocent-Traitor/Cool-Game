@@ -7,6 +7,7 @@ class_name Dialogue_DB
 ##    'character': The internal character identifier string (NOT NUMBER ID)
 ##    'text': Text to display
 ##    'vars': Variables to insert into the text
+##	  'body': For using VN style dialogue
 ##    'options': Additional options to use when displaying text <- NOTE: Dunno if I'll use this
 ##
 
@@ -34,6 +35,33 @@ const DIALOGUE_DB = {
             'text': 'Hello %s, there are %d enemies outside!',
             'vars': ['Joe', 10]
         }
+	},
+	'scene_2': {
+		0: {
+			'character': 'Stickman',
+			'text': 'I am happy :D',
+			'body': 'res://sprites/stickman-happy.png'
+		},
+		1: {
+			'character': 'Stickman',
+			'text': 'I am sad D:',
+			'body': 'res://sprites/stickman-nothappy.png'
+		},
+		2: {
+			'character': 'Stickman',
+			'text': 'I am angry D:<',
+			'body': 'res://sprites/stickman-angy.png'
+		},
+	},
+	'scene_3': {
+		0: {
+			'character': 'DebugMan',
+			'text': '"But now we shall both surely drown" said the Frog.' 
+		},
+		1: {
+			'character': 'DebugMan',
+			'text': '"lol" said the Scorpion, "lmao"'
+		}
 	}
 }
 
@@ -43,4 +71,14 @@ const CHARACTER_DB = {
         'id': 0,
         'portrait': 'res://sprites/frame1.png'
     },
+	'Stickman': {
+		'name': 'Stick Man',
+		'id': 1,
+		'portrait': null,
+	},
+	'DebugMan': {
+		'name': null,
+		'id': 2,
+		'portrait': null,
+	},
 }

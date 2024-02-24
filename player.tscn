@@ -26,6 +26,14 @@ position = Vector2(50, 0)
 input_pickable = false
 monitorable = false
 
+[node name="ColorRect" type="ColorRect" parent="InteractBody"]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 24.0
+scale = Vector2(0.800001, 0.799999)
+color = Color(1, 1, 1, 0.12549)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBody"]
 shape = SubResource("RectangleShape2D_k6nqo")
 debug_color = Color(0.827451, 0.0980392, 0.92549, 0.419608)
