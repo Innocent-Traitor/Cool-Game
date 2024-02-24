@@ -62,8 +62,8 @@ func load_next_dialogue() -> void:
 		current_talk = 'NO TALK'
 		talk_index = 0
 		is_talking = false
-		visible = false
 		await get_tree().create_timer(0.5).timeout
+		visible = false
 		get_tree().get_first_node_in_group('Player').is_busy = false
 		process_mode = PROCESS_MODE_DISABLED
 
@@ -75,7 +75,7 @@ func load_scene(scene : String) -> void:
 
 
 func handle_portrait() -> void:
-	if (not do_animation): return
+	if (not do_animation or not visible): return
 	if (is_talking):
 		$AnimationPlayer.play(current_talk.get('character') + '_Talk')
 	else:
