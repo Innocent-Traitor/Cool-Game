@@ -60,7 +60,20 @@ const DIALOGUE_DB = {
 		},
 		1: {
 			'character': 'DebugMan',
-			'text': '"lol" said the Scorpion, "lmao"'
+			'text': '"lol" said the Scorpion, "lmao"',
+			'choice1': 'Cool Story',
+			'choice1_dest': 2,
+			'choice2': 'Shut up',
+			'choice2_dest': 3,
+		},
+		2: {
+			'character': 'DebugMan',
+			'text': 'Thanks :D',
+			'override': 99
+		},
+		3: {
+			'character': 'DebugMan',
+			'text': 'bruh',
 		}
 	}
 }

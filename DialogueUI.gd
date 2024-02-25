@@ -10,6 +10,8 @@ var current_talk = 'NO TALK'
 var talk_index = 0
 var is_talking = false
 var do_animation = false
+var has_choice = false
+var talk_override = -1
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_DISABLED
@@ -21,10 +23,20 @@ func _get_scene_load_request(scene : String):
 
 ## Sets the Dialogue Box's Portrait, Text, and begins the display of text
 func display_dialogue() -> void:
+	if (str(current_scene) == "NO SCENE" or str(current_talk) == 'NO TALK'):
+		print('ERROR! Either no scene or talk is set! \nCurrent Scene: ', current_scene, " Current Talk: ", current_talk)
+		print('Returning to prevent crash! Please investigate to prevent further errors!')
+		return
 	var chara = CHARACTER_DB[current_talk.get('character')]
 	
 	adjust_textbox(chara)
 	handle_vn_display()
+
+	if 'choice1' in current_talk:
+		handle_choice()
+	
+	if 'override' in current_talk:
+		talk_override = current_talk.override
 
 	if 'vars' in current_talk:
 		$TextBox/TextBoxText.text = current_talk.text % current_talk.vars
@@ -50,11 +62,15 @@ func handle_text_display(options : Array) -> void:
 
 ## Load the next dialogue in the current LOADED scene
 func load_next_dialogue() -> void:
-	talk_index += 1
+	if (not talk_override == -1):
+		talk_index = talk_override
+		talk_override = -1
+	else:
+		talk_index += 1
+
 	if (not talk_index > len(current_scene) - 1):
 		current_talk = current_scene[talk_index]
 		display_dialogue()
-		handle_vn_display()
 	else:
 		current_scene = 'NO SCENE'
 		current_talk = 'NO TALK'
@@ -118,6 +134,10 @@ func handle_vn_display():
 		$VNCharacterArea/Character1.texture = load(current_talk['body'])
 	else:
 		$VNCharacterArea.visible = false
+
+
+func handle_choice():
+	pass
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
