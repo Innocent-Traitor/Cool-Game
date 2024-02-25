@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq44qxy4hvbb2"]
+[gd_scene load_steps=8 format=3 uid="uid://dq44qxy4hvbb2"]
 
 [ext_resource type="PackedScene" uid="uid://b7e4dhx86xbdl" path="res://player.tscn" id="1_6gny1"]
 [ext_resource type="PackedScene" uid="uid://behubdm45nj" path="res://non_moving_npc.tscn" id="2_xbnbx"]
@@ -7,8 +7,6 @@
 [ext_resource type="Script" path="res://test_talk_2.gd" id="4_108lc"]
 [ext_resource type="Script" path="res://test_talk_3.gd" id="5_arq20"]
 [ext_resource type="Script" path="res://debug_button_transition.gd" id="7_vijn0"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aqtwa"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -62,9 +60,9 @@ visible = false
 
 [node name="Button" type="Button" parent="."]
 z_index = 100
-offset_left = 899.0
+offset_left = 901.0
 offset_top = 82.0
-offset_right = 1064.0
+offset_right = 1066.0
 offset_bottom = 113.0
 scale = Vector2(1, 0.995416)
 text = "Fade Transition Test"
@@ -79,14 +77,6 @@ offset_bottom = 177.0
 scale = Vector2(1, 0.995416)
 text = "Swipe Transition Test"
 script = ExtResource("7_vijn0")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_top = 1250.0
-offset_right = 1500.0
-offset_bottom = 2750.0
-rotation = 4.71239
-texture = SubResource("PlaceholderTexture2D_aqtwa")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
