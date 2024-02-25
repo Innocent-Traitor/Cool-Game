@@ -103,6 +103,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="RPGChoice" type="Control" parent="DialogueScene"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -127,6 +128,50 @@ horizontal_alignment = 2
 vertical_alignment = 3
 
 [node name="SelectionArrow" type="TextureRect" parent="DialogueScene/RPGChoice"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 367.5
+offset_right = 925.0
+offset_bottom = 392.5
+texture = ExtResource("4_30c8d")
+
+[node name="RPGChoice2" type="Control" parent="DialogueScene"]
+anchors_preset = 0
+offset_left = -200.0
+offset_right = -160.0
+offset_bottom = 40.0
+
+[node name="ChoiceBoxBackground" type="Panel" parent="DialogueScene/RPGChoice2"]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 320.0
+offset_right = 1065.0
+offset_bottom = 400.0
+theme_override_styles/panel = ExtResource("2_4334r")
+
+[node name="Choice1ffadsafsd" type="Label" parent="DialogueScene/RPGChoice2"]
+layout_mode = 0
+offset_left = 935.0
+offset_top = 368.0
+offset_right = 1060.0
+offset_bottom = 393.0
+text = "Placeholder"
+label_settings = SubResource("LabelSettings_68gnc")
+horizontal_alignment = 2
+vertical_alignment = 3
+
+[node name="Choice2dsffdasasdf" type="Label" parent="DialogueScene/RPGChoice2"]
+layout_mode = 0
+offset_left = 935.0
+offset_top = 327.5
+offset_right = 1060.0
+offset_bottom = 352.5
+text = "Placeholder"
+label_settings = SubResource("LabelSettings_68gnc")
+horizontal_alignment = 2
+vertical_alignment = 3
+
+[node name="SelectionArrow" type="TextureRect" parent="DialogueScene/RPGChoice2"]
 layout_mode = 0
 offset_left = 900.0
 offset_top = 367.5

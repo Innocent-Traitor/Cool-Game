@@ -137,7 +137,24 @@ func handle_vn_display():
 
 
 func handle_choice():
-	pass
+	# Makes the choices variable
+	var choices = []
+	for i in 8:
+		if (current_talk.has('choice' + str(i))):
+			choices.append(current_talk['choice' + str(i)])
+	
+	# Adjust the choice box size and position
+	var size_dif = 40 * len(choices)
+	$RPGChoice/ChoiceBoxBackground.size = Vector2(175, size_dif)
+	$RPGChoice/ChoiceBoxBackground.position = Vector2(890, 400 - size_dif)
+	$RPGChoice.visible = true
+
+
+	## Set a for loop that will set the position of each choice and set the text
+	## Just store a position that will be the start position, and minus by 40 each time the for loop happens to keep having the label go up
+	## after that, focus on getting the cursor to move around by both mouse and keyboard movement
+	## Make sure when the select the option, to goes to the choice_dest talk_index specified in the DIALOGUE_DB
+	$RPGChoice/Choice1.text = choices[0]
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
