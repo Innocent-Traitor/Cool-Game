@@ -78,7 +78,7 @@ _data = {
 "RESET": SubResource("Animation_3vjlm")
 }
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="DialogueSystem" type="CanvasLayer"]
 
 [node name="DialogueScene" type="Control" parent="." groups=["DialogueBox"]]
 unique_name_in_owner = true
