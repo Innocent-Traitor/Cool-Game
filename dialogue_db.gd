@@ -65,6 +65,8 @@ const DIALOGUE_DB = {
 			'choice1_dest': 2,
 			'choice2': 'Shut up',
 			'choice2_dest': 3,
+			'choice3': 'what',
+			'choice3_dest': 99,
 		},
 		2: {
 			'character': 'DebugMan',

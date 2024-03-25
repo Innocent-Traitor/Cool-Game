@@ -2,10 +2,14 @@ extends CharacterBody2D
 
 @export var speed = 400
 
+@onready var AniSprite = $AnimatedSprite2D
+@onready var InteractBody = $InteractBody
+
 var is_busy : bool = false
 
 func _ready() -> void:
 	print("ready")
+	AniSprite.play('Idle')
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,23 +22,31 @@ func handle_movement() -> void:
 	var dir = Input.get_vector("left", "right", "up", "down")
 	velocity = dir * speed
 	move_and_slide()
+	if (dir):
+		AniSprite.play("Run")
+	else:
+		AniSprite.play("Idle")
 
 	match dir:
 		Vector2(1, 0):
-			$InteractBody.position = Vector2(50, 0)
+			InteractBody.position = Vector2(50, 0)
+			AniSprite.flip_h = false
 		Vector2(-1, 0):
-			$InteractBody.position = Vector2(-50, 0)
+			InteractBody.position = Vector2(-50, 0)
+			AniSprite.flip_h = true
 		Vector2(0, 1):
-			$InteractBody.position = Vector2(0, 50)
+			InteractBody.position = Vector2(0, 50)
+
 		Vector2(0, -1):
-			$InteractBody.position = Vector2(0, -50)
+			InteractBody.position = Vector2(0, -50)
 
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('next') and not is_busy:
-		var body = $InteractBody.get_overlapping_areas()
+		var body = InteractBody.get_overlapping_areas()
 		if body:
+			AniSprite.play("Idle")
 			do_interact(body[0])
 			print('interacting with ' + str(body[0]))
 

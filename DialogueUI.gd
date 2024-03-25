@@ -10,7 +10,10 @@ var current_talk = 'NO TALK'
 var talk_index = 0
 var is_talking = false
 var do_animation = false
+
 var has_choice = false
+var current_choice = 0
+var choices = []
 var talk_override = -1
 
 func _ready() -> void:
@@ -33,7 +36,7 @@ func display_dialogue() -> void:
 	handle_vn_display()
 
 	if 'choice1' in current_talk:
-		handle_choice()
+		has_choice = true
 	
 	if 'override' in current_talk:
 		talk_override = current_talk.override
@@ -53,6 +56,9 @@ func display_dialogue() -> void:
 func handle_text_display(options : Array) -> void:
 	if ($TextBox/TextBoxText.visible_characters >= len($TextBox/TextBoxText.text) or not is_talking):
 		is_talking = false
+		$TextBox/TextBoxText.visible_characters = -1
+		if (has_choice):
+			handle_choice()
 		return
 
 	$TextBox/TextBoxText.visible_characters += text_speed
@@ -137,8 +143,6 @@ func handle_vn_display():
 
 
 func handle_choice():
-	# Makes the choices variable
-	var choices = []
 	for i in 8:
 		if (current_talk.has('choice' + str(i))):
 			choices.append(current_talk['choice' + str(i)])
@@ -149,21 +153,47 @@ func handle_choice():
 	$RPGChoice/ChoiceBoxBackground.position = Vector2(890, 400 - size_dif)
 	$RPGChoice.visible = true
 
+	# Create the label
+	var label_pos = 368
+	for i in len(choices):
+		var label = Label.new()
+		label.name = 'Choice' + str(i)
+		label.text = choices[i]
+		label.label_settings = load('res://label.tres')
+		label.add_to_group('choices')
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		label.vertical_alignment = VERTICAL_ALIGNMENT_FILL
+		label.size = Vector2(125, 25)
+		label.position = Vector2(935, label_pos)
+		label_pos -= 40 # Sets the position for the next choice
+		$RPGChoice/ChoiceNodes.add_child(label)
+	
+	current_choice = 0
 
-	## Set a for loop that will set the position of each choice and set the text
-	## Just store a position that will be the start position, and minus by 40 each time the for loop happens to keep having the label go up
-	## after that, focus on getting the cursor to move around by both mouse and keyboard movement
-	## Make sure when the select the option, to goes to the choice_dest talk_index specified in the DIALOGUE_DB
-	$RPGChoice/Choice1.text = choices[0]
 
-
-func _unhandled_key_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('next'):
-		if (not is_talking):
+		if (has_choice and $TextBox/TextBoxText.visible_characters == -1):
+			talk_override = current_talk.get('choice' + str(current_choice + 1) + '_dest')
+			has_choice = false
+			$RPGChoice.visible = false
+			$RPGChoice/SelectionArrow.position.y = 368
+			choices.clear()
+			get_tree().call_group('choices', 'queue_free')
+
+		if (not is_talking and not has_choice):
 			load_next_dialogue()
 		else:
 			$TextBox/TextBoxText.visible_characters = -1
 			is_talking = false
+	
+	if (has_choice):
+		if (event.is_action_pressed('up') and not current_choice == len(choices) - 1):
+			$RPGChoice/SelectionArrow.position.y -= 40
+			current_choice += 1
+		elif (event.is_action_pressed('down') and not current_choice == 0):
+			$RPGChoice/SelectionArrow.position.y += 40
+			current_choice -= 1
 
 
 ## Open RichTextLabel URLs

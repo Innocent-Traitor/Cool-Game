@@ -11,7 +11,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_6gny1")]
-position = Vector2(623, 249)
+position = Vector2(628, 250)
 
 [node name="TestTalk1" parent="." instance=ExtResource("2_xbnbx")]
 position = Vector2(342, 242)
@@ -56,7 +56,13 @@ text = "Narration Style"
 [node name="DialogueSystem" parent="." instance=ExtResource("3_vf8kp")]
 
 [node name="DialogueScene" parent="DialogueSystem" index="0"]
-visible = false
+mouse_filter = 2
+
+[node name="RPGChoice" parent="DialogueSystem/DialogueScene" index="1"]
+visible = true
+
+[node name="NinePatchRect" parent="DialogueSystem/PopupDialog" index="0"]
+layout_mode = 0
 
 [node name="Button" type="Button" parent="."]
 z_index = 100
