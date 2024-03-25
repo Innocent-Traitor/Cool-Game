@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dx0syl6a7tuvj"]
+
+[ext_resource type="FontFile" uid="uid://gjsrfpct15jo" path="res://sprites/NotoSans-VariableFont_wdth,wght.ttf" id="1_3aayh"]
+
+[resource]
+font = ExtResource("1_3aayh")
