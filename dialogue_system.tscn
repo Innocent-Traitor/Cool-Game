@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://yyty7iutk84o"]
+[gd_scene load_steps=19 format=3 uid="uid://yyty7iutk84o"]
 
 [ext_resource type="Script" path="res://DialogueUI.gd" id="1_4sc00"]
 [ext_resource type="StyleBox" uid="uid://cdhoistp1ue8p" path="res://backgroundpanel.tres" id="2_4334r"]
@@ -12,8 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://bn5ulqkjbx1f8" path="res://sprites/frame5.png" id="6_ls3co"]
 [ext_resource type="Texture2D" uid="uid://cne8dutpuqrme" path="res://sprites/frame3.png" id="7_v6hbh"]
 [ext_resource type="Texture2D" uid="uid://c4dq3bpre8kfo" path="res://sprites/frame6.png" id="7_vsck7"]
-[ext_resource type="Script" path="res://PopupDialog.gd" id="13_smeqf"]
-[ext_resource type="Texture2D" uid="uid://eyaltk1e1lh2" path="res://sprites/pop-up-9-slice.png" id="14_r0h41"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcacp"]
 bg_color = Color(0.109804, 0.109804, 0.109804, 0.776471)
@@ -237,31 +235,6 @@ offset_left = 52.0
 offset_top = 68.0
 offset_right = 92.0
 offset_bottom = 91.0
-
-[node name="PopupDialog" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("13_smeqf")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="PopupDialog"]
-offset_right = 10.0
-offset_bottom = 10.0
-scale = Vector2(4, 4)
-texture = ExtResource("14_r0h41")
-region_rect = Rect2(0, 0, 50, 50)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="PopupText" type="Label" parent="PopupDialog"]
-layout_mode = 0
-offset_right = 232.0
-offset_bottom = 23.0
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="visibility_changed" from="DialogueScene" to="DialogueScene" method="_on_visibility_changed"]
 [connection signal="meta_clicked" from="DialogueScene/TextBox/TextBoxText" to="DialogueScene" method="_on_dialogue_text_meta_clicked"]

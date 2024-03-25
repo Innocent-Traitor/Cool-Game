@@ -113,7 +113,6 @@ func swipe_out_transition(options) -> void:
 	tween.tween_method(func(value: float): grad.set_offset(0, value), -0.9, 0.99, options.duration)
 	tween.tween_callback(texture_rect.queue_free)
 
-
 func swipe_in_transition(options) -> void:
 	if (not len(options) == 3): 
 		options.duration = DEFAULTS.swipe.duration if not options.has('duration') else options.duration

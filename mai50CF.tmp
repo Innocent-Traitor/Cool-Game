@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq44qxy4hvbb2"]
+[gd_scene load_steps=9 format=3 uid="uid://dq44qxy4hvbb2"]
 
 [ext_resource type="PackedScene" uid="uid://b7e4dhx86xbdl" path="res://player.tscn" id="1_6gny1"]
+[ext_resource type="PackedScene" uid="uid://b1715xvphhfdv" path="res://popup_dialog.tscn" id="1_nd4h1"]
 [ext_resource type="PackedScene" uid="uid://behubdm45nj" path="res://non_moving_npc.tscn" id="2_xbnbx"]
 [ext_resource type="Script" path="res://talk_test_1.gd" id="3_8htsk"]
 [ext_resource type="PackedScene" uid="uid://yyty7iutk84o" path="res://dialogue_system.tscn" id="3_vf8kp"]
@@ -90,6 +91,12 @@ offset_bottom = 227.0
 scale = Vector2(1, 0.995416)
 text = "Popup Text Test"
 script = ExtResource("7_vijn0")
+
+[node name="PopupDialog" parent="." instance=ExtResource("1_nd4h1")]
+offset_left = 250.0
+offset_top = 82.0
+offset_right = 290.0
+offset_bottom = 122.0
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]

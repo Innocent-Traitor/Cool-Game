@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 DialogueDB="*res://dialogue_db.gd"
 CutsceneHandler="*res://cutscene_handler.gd"
+GameUtils="*res://game_utils.gd"
 
 [input]
 

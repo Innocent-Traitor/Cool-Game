@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1715xvphhfdv"]
+
+[ext_resource type="Script" path="res://PopupDialog.gd" id="1_kdmnu"]
+[ext_resource type="Texture2D" uid="uid://eyaltk1e1lh2" path="res://sprites/pop-up-9-slice.png" id="2_x3i3b"]
+
+[node name="PopupDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_right = 38.0
+offset_bottom = 40.0
+script = ExtResource("1_kdmnu")
+text = null
+pos = null
+dur = null
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 10.0
+offset_bottom = 11.0
+texture = ExtResource("2_x3i3b")
+region_rect = Rect2(0, 0, 50, 50)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="PopupText" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 232.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+vertical_alignment = 1

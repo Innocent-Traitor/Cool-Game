@@ -11,3 +11,6 @@ func _on_pressed():
 		CutsceneHandler.play_transition('SwipeOut')
 		await get_tree().create_timer(1).timeout
 		CutsceneHandler.play_transition('SwipeIn')
+
+	if (text == 'Popup Text Test'):
+		GameUtils.display_popup('This is a test', Vector2(200, 200), 3)
