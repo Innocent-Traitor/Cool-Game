@@ -1,21 +1,21 @@
 [gd_scene load_steps=8 format=3 uid="uid://dq44qxy4hvbb2"]
 
-[ext_resource type="PackedScene" uid="uid://b7e4dhx86xbdl" path="res://player.tscn" id="1_6gny1"]
-[ext_resource type="PackedScene" uid="uid://behubdm45nj" path="res://non_moving_npc.tscn" id="2_xbnbx"]
-[ext_resource type="Script" path="res://talk_test_1.gd" id="3_8htsk"]
-[ext_resource type="PackedScene" uid="uid://yyty7iutk84o" path="res://dialogue_system.tscn" id="3_vf8kp"]
-[ext_resource type="Script" path="res://test_talk_2.gd" id="4_108lc"]
-[ext_resource type="Script" path="res://test_talk_3.gd" id="5_arq20"]
-[ext_resource type="Script" path="res://debug_button_transition.gd" id="7_vijn0"]
+[ext_resource type="PackedScene" uid="uid://b7e4dhx86xbdl" path="res://scenes/player.tscn" id="1_i14k1"]
+[ext_resource type="PackedScene" uid="uid://behubdm45nj" path="res://scenes/non_moving_npc.tscn" id="2_sphfu"]
+[ext_resource type="Script" path="res://scripts/talk_test_1.gd" id="3_hj70s"]
+[ext_resource type="Script" path="res://scripts/test_talk_2.gd" id="4_ajhlv"]
+[ext_resource type="Script" path="res://scripts/test_talk_3.gd" id="5_narg2"]
+[ext_resource type="PackedScene" uid="uid://yyty7iutk84o" path="res://scenes/dialogue_system.tscn" id="6_12qdf"]
+[ext_resource type="Script" path="res://scripts/debug_button_transition.gd" id="7_o3xcg"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_6gny1")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_i14k1")]
 position = Vector2(628, 250)
 
-[node name="TestTalk1" parent="." instance=ExtResource("2_xbnbx")]
+[node name="TestTalk1" parent="." instance=ExtResource("2_sphfu")]
 position = Vector2(342, 242)
-script = ExtResource("3_8htsk")
+script = ExtResource("3_hj70s")
 npc_name = "Adachi Rei"
 npc_interact = "NPC_TALK"
 
@@ -26,10 +26,10 @@ offset_right = 8.0
 offset_bottom = -47.0
 text = "Basic"
 
-[node name="TestTalk2" parent="." instance=ExtResource("2_xbnbx")]
+[node name="TestTalk2" parent="." instance=ExtResource("2_sphfu")]
 modulate = Color(0.168627, 1, 1, 1)
 position = Vector2(330, 398)
-script = ExtResource("4_108lc")
+script = ExtResource("4_ajhlv")
 npc_name = "Stickman"
 npc_interact = "NPC_TALK"
 
@@ -40,10 +40,10 @@ offset_right = 13.0
 offset_bottom = -39.0
 text = "Visual Novel Style"
 
-[node name="TestTalk3" parent="." instance=ExtResource("2_xbnbx")]
+[node name="TestTalk3" parent="." instance=ExtResource("2_sphfu")]
 modulate = Color(0.980392, 0.0470588, 0.823529, 1)
 position = Vector2(335, 499)
-script = ExtResource("5_arq20")
+script = ExtResource("5_narg2")
 npc_interact = "NPC_TALK"
 
 [node name="Label" type="Label" parent="TestTalk3"]
@@ -53,7 +53,7 @@ offset_right = 14.0
 offset_bottom = 65.0
 text = "Narration Style"
 
-[node name="DialogueSystem" parent="." instance=ExtResource("3_vf8kp")]
+[node name="DialogueSystem" parent="." instance=ExtResource("6_12qdf")]
 
 [node name="DialogueScene" parent="DialogueSystem" index="0"]
 mouse_filter = 2
@@ -68,8 +68,9 @@ offset_top = 82.0
 offset_right = 1066.0
 offset_bottom = 113.0
 scale = Vector2(1, 0.995416)
+focus_mode = 0
 text = "Fade Transition Test"
-script = ExtResource("7_vijn0")
+script = ExtResource("7_o3xcg")
 
 [node name="Button2" type="Button" parent="."]
 z_index = 100
@@ -78,8 +79,9 @@ offset_top = 146.0
 offset_right = 1077.0
 offset_bottom = 177.0
 scale = Vector2(1, 0.995416)
+focus_mode = 0
 text = "Swipe Transition Test"
-script = ExtResource("7_vijn0")
+script = ExtResource("7_o3xcg")
 
 [node name="Button3" type="Button" parent="."]
 z_index = 100
@@ -88,8 +90,9 @@ offset_top = 196.0
 offset_right = 1074.0
 offset_bottom = 227.0
 scale = Vector2(1, 0.995416)
+focus_mode = 0
 text = "Popup Text Test"
-script = ExtResource("7_vijn0")
+script = ExtResource("7_o3xcg")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]

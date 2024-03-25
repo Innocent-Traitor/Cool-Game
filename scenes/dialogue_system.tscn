@@ -1,10 +1,10 @@
 [gd_scene load_steps=19 format=3 uid="uid://yyty7iutk84o"]
 
-[ext_resource type="Script" path="res://DialogueUI.gd" id="1_4sc00"]
-[ext_resource type="StyleBox" uid="uid://cdhoistp1ue8p" path="res://backgroundpanel.tres" id="2_4334r"]
+[ext_resource type="Script" path="res://scripts/DialogueUI.gd" id="1_4sc00"]
+[ext_resource type="StyleBox" uid="uid://cdhoistp1ue8p" path="res://resources/backgroundpanel.tres" id="2_eu55r"]
 [ext_resource type="Texture2D" uid="uid://bvflaupf21hnu" path="res://sprites/stickman-happy.png" id="2_nqrov"]
 [ext_resource type="Texture2D" uid="uid://dmdsr320tvfcy" path="res://sprites/frame1.png" id="2_voja3"]
-[ext_resource type="Script" path="res://DebugMenu.gd" id="3_0rjqr"]
+[ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="3_0rjqr"]
 [ext_resource type="FontFile" uid="uid://gjsrfpct15jo" path="res://sprites/NotoSans-VariableFont_wdth,wght.ttf" id="3_u1302"]
 [ext_resource type="Texture2D" uid="uid://dcorpyh008f1w" path="res://sprites/frame2.png" id="4_3pecj"]
 [ext_resource type="Texture2D" uid="uid://bp8o5wvqhandk" path="res://sprites/arrow.png" id="4_30c8d"]
@@ -84,6 +84,7 @@ _data = {
 
 [node name="DialogueScene" type="Control" parent="." groups=["DialogueBox"]]
 unique_name_in_owner = true
+visible = false
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -111,7 +112,7 @@ offset_left = 890.0
 offset_top = 360.0
 offset_right = 1065.0
 offset_bottom = 400.0
-theme_override_styles/panel = ExtResource("2_4334r")
+theme_override_styles/panel = ExtResource("2_eu55r")
 
 [node name="ChoiceNodes" type="Control" parent="DialogueScene/RPGChoice"]
 anchors_preset = 0
@@ -158,7 +159,7 @@ offset_left = 76.0
 offset_top = 420.0
 offset_right = 1076.0
 offset_bottom = 595.0
-theme_override_styles/panel = ExtResource("2_4334r")
+theme_override_styles/panel = ExtResource("2_eu55r")
 
 [node name="TextBoxPortrait" type="TextureRect" parent="DialogueScene/TextBox"]
 visible = false
