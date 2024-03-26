@@ -22,6 +22,17 @@ DialogueDB="*res://scripts/dialogue_db.gd"
 CutsceneHandler="*res://scripts/cutscene_handler.gd"
 GameUtils="*res://scripts/game_utils.gd"
 
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/resizable=false
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/snap/snap_2d_transforms_to_pixel=true
+
 [input]
 
 left={
@@ -59,3 +70,4 @@ next={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_transforms_to_pixel=true

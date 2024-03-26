@@ -84,7 +84,6 @@ _data = {
 
 [node name="DialogueScene" type="Control" parent="." groups=["DialogueBox"]]
 unique_name_in_owner = true
-visible = false
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -232,10 +231,10 @@ script = ExtResource("3_0rjqr")
 
 [node name="FPSCounter" type="Label" parent="DebugMenu"]
 layout_mode = 0
-offset_left = 52.0
-offset_top = 68.0
-offset_right = 92.0
-offset_bottom = 91.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 48.0
+offset_bottom = 29.0
 
 [connection signal="visibility_changed" from="DialogueScene" to="DialogueScene" method="_on_visibility_changed"]
 [connection signal="meta_clicked" from="DialogueScene/TextBox/TextBoxText" to="DialogueScene" method="_on_dialogue_text_meta_clicked"]

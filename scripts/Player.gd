@@ -29,16 +29,16 @@ func handle_movement() -> void:
 
 	match dir:
 		Vector2(1, 0):
-			InteractBody.position = Vector2(50, 0)
+			InteractBody.position = Vector2(16, 0)
 			AniSprite.flip_h = false
 		Vector2(-1, 0):
-			InteractBody.position = Vector2(-50, 0)
+			InteractBody.position = Vector2(-16, 0)
 			AniSprite.flip_h = true
 		Vector2(0, 1):
-			InteractBody.position = Vector2(0, 50)
+			InteractBody.position = Vector2(0, 16)
 
 		Vector2(0, -1):
-			InteractBody.position = Vector2(0, -50)
+			InteractBody.position = Vector2(0, -16)
 
 
 

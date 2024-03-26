@@ -115,35 +115,33 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3a33"]
-size = Vector2(48, 48)
+size = Vector2(12, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6nqo"]
-size = Vector2(32, 32)
+size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_m6u2x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_nxesv")
-animation = &"Idle"
-frame_progress = 0.494926
+animation = &"Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_y3a33")
 debug_color = Color(1, 1, 1, 0.419608)
 
 [node name="InteractBody" type="Area2D" parent="."]
-position = Vector2(50, 0)
+position = Vector2(25, 0)
 input_pickable = false
 monitorable = false
 
 [node name="ColorRect" type="ColorRect" parent="InteractBody"]
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 24.0
-offset_bottom = 24.0
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 10.0
+offset_bottom = 10.0
 scale = Vector2(0.800001, 0.799999)
 color = Color(1, 1, 1, 0.12549)
 
