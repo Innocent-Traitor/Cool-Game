@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends AnimatableBody2D
 class_name NonPlayableCharacter
 
 @export var npc_name : String = 'NPC'
@@ -8,7 +8,6 @@ class_name NonPlayableCharacter
 
 func handle_interact(): 
 	pass
-
 
 
 func send_interact_info():

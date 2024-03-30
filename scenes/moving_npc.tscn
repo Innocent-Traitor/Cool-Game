@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cyiwoh7g7xmd4"]
 
-[ext_resource type="Script" path="res://moving_npc.gd" id="1_k1b63"]
+[ext_resource type="Script" path="res://NPC_movement.gd" id="1_k1b63"]
 [ext_resource type="Texture2D" uid="uid://de8jnxvaymbwl" path="res://sprites/spr_animals.png" id="2_tv5cc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f5qbt"]

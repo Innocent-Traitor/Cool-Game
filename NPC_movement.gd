@@ -1,11 +1,7 @@
-extends CharacterBody2D
+extends PhysicsBody2D
 class_name MovingNPC
 
-@export var npc_name : String = 'NPC'
-@export_enum("FRIENDLY", "NEUTRAL", "HOSTILE") var npc_relationship : int
-@export_enum("NPC_TALK", "NPC_SHOP") var npc_interact : String
-
-
+## TODO: Change this to an actual movement and collosion system
 func do_random_move():
 	var new_pos = Vector2(global_position.x + randi_range(-200, 200), global_position.y + randi_range(-50, 50))
 	$AnimatedSprite2D.play('Run')
@@ -25,4 +21,13 @@ func make_new_timer():
 
 
 func _on_timer_timeout():
-	do_random_move()
+	#do_random_move()
+	pass
+
+
+func do_movement():
+	move_and_collide(Vector2.UP)
+
+
+func _physics_process(_delta):
+	do_movement()
